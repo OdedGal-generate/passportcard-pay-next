@@ -19,10 +19,17 @@ export async function generateMetadata({
     title: `חיסכו בעמלות מיותרות בנסיעה לחו״ל — ${agent.name}`,
     description: `הפסיקו לשלם עמלות מיותרות בחו״ל — ${agent.name}, ${agent.title}`,
     openGraph: {
-      title: "חיסכו בעמלות מיותרות בנסיעה לחו״ל",
-      description:
-        "הפסיקו לשלם עמלות מיותרות בחו״ל — המדריך הקצר לנסיעה חכמה יותר",
+      title: `חיסכו בעמלות מיותרות בנסיעה לחו״ל — ${agent.name}`,
+      description: `הפסיקו לשלם עמלות מיותרות בחו״ל — ${agent.name}, ${agent.title}`,
       locale: "he_IL",
+      images: [
+        {
+          url: `https://passportcard-pay-next.vercel.app/images/og-base.png`,
+          width: 800,
+          height: 630,
+          alt: "חיסכו בעמלות מיותרות בנסיעה לחו״ל",
+        },
+      ],
     },
   };
 }
