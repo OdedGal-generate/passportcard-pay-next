@@ -24,7 +24,7 @@ export async function generateMetadata({
       locale: "he_IL",
       images: [
         {
-          url: `https://passportcard-pay-next.vercel.app/api/og?slug=${slug}`,
+          url: `https://passportcard-pay-next.vercel.app/images/og/${slug}.png`,
           width: 800,
           height: 630,
           alt: `חיסכו בעמלות מיותרות בנסיעה לחו״ל — ${agent.name}`,
