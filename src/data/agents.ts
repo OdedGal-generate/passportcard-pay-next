@@ -79,6 +79,12 @@ export const agents: AgentConfig[] = [
     title: "סוכן ביטוח, פנסיה ופיננסים",
     webhookUrl: "https://n8n.srv1068559.hstgr.cloud/webhook/0bbcca52-62c9-4fc4-94fb-b25d46f113c2",
   },
+  {
+    name: "דניאל דבילה",
+    slug: "daniel-dvela",
+    title: "סוכן ביטוח, פנסיה ופיננסים",
+    webhookUrl: "https://n8n.srv1068559.hstgr.cloud/webhook/a268fc28-8840-4448-ab66-f951e3910eed",
+  },
 ];
 
 export function getAgent(slug: string): AgentConfig | undefined {
