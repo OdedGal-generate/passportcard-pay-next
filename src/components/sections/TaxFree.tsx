@@ -39,7 +39,7 @@ export default function TaxFree() {
             </strong>
             הגשת בקשות דיגיטלית.
             <br />
-            מקסימום יעילות — מגישים את הכל.
+            מקסימום יעילות — לא מפספסים החזרים!
           </div>
         </div>
       </RevealOnScroll>
