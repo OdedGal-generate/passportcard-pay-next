@@ -34,6 +34,7 @@ export async function GET(request: NextRequest) {
           fontFamily: "sans-serif",
           padding: "40px",
           position: "relative",
+          direction: "rtl" as const,
         }}
       >
         {/* Top section: Agent info */}
