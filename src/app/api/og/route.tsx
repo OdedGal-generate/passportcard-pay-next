@@ -1,6 +1,6 @@
-import { ImageResponse } from "next/og";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getAgent } from "@/data/agents";
+import sharp from "sharp";
 import { readFileSync } from "fs";
 import { join } from "path";
 
@@ -12,162 +12,113 @@ export async function GET(request: NextRequest) {
     return new Response("Agent not found", { status: 404 });
   }
 
-  // Read the agent photo
-  let photoBase64 = "";
+  // Read agent photo and make circular
+  let photoComposite: sharp.OverlayOptions[] = [];
   try {
     const photoPath = join(process.cwd(), "public", "images", "agents", `${slug}.jpg`);
     const photoBuffer = readFileSync(photoPath);
-    photoBase64 = `data:image/jpeg;base64,${photoBuffer.toString("base64")}`;
+
+    // Resize and make circular with white border
+    const size = 90;
+    const borderSize = 4;
+    const totalSize = size + borderSize * 2;
+
+    // White circle border
+    const borderCircle = Buffer.from(
+      `<svg width="${totalSize}" height="${totalSize}"><circle cx="${totalSize / 2}" cy="${totalSize / 2}" r="${totalSize / 2}" fill="white"/></svg>`
+    );
+
+    // Circular mask for photo
+    const circleMask = Buffer.from(
+      `<svg width="${size}" height="${size}"><circle cx="${size / 2}" cy="${size / 2}" r="${size / 2}" fill="white"/></svg>`
+    );
+
+    const circularPhoto = await sharp(photoBuffer)
+      .resize(size, size, { fit: "cover" })
+      .composite([{ input: circleMask, blend: "dest-in" }])
+      .png()
+      .toBuffer();
+
+    const photoWithBorder = await sharp(borderCircle)
+      .composite([{ input: circularPhoto, left: borderSize, top: borderSize }])
+      .png()
+      .toBuffer();
+
+    photoComposite = [{ input: photoWithBorder, left: 800 - 40 - totalSize, top: 40 }];
   } catch {
-    // No photo available
+    // No photo
   }
 
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          width: "800px",
-          height: "630px",
-          display: "flex",
-          flexDirection: "column",
-          background: "linear-gradient(135deg, #D0021B 0%, #a00118 100%)",
-          fontFamily: "sans-serif",
-          padding: "40px",
-          position: "relative",
-          direction: "rtl" as const,
-        }}
-      >
-        {/* Top section: Agent info */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "20px",
-            marginBottom: "30px",
-          }}
-        >
-          {/* Agent photo */}
-          {photoBase64 && (
-            <div
-              style={{
-                width: "90px",
-                height: "90px",
-                borderRadius: "50%",
-                border: "3px solid white",
-                overflow: "hidden",
-                display: "flex",
-                flexShrink: 0,
-              }}
-            >
-              <img
-                src={photoBase64}
-                width={90}
-                height={90}
-                style={{ objectFit: "cover" }}
-              />
-            </div>
-          )}
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <div
-              style={{
-                fontSize: "32px",
-                fontWeight: 900,
-                color: "white",
-              }}
-            >
-              {agent.name}
-            </div>
-            <div
-              style={{
-                fontSize: "20px",
-                fontWeight: 500,
-                color: "rgba(255,255,255,0.8)",
-                marginTop: "4px",
-              }}
-            >
-              {agent.title}
-            </div>
-          </div>
-        </div>
+  // Build SVG with all text (RTL handled natively in SVG with direction + text-anchor)
+  const svgText = `
+    <svg width="800" height="630" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#D0021B"/>
+          <stop offset="100%" style="stop-color:#a00118"/>
+        </linearGradient>
+      </defs>
 
-        {/* Main headline — the ad */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            flex: 1,
-            justifyContent: "center",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "56px",
-              fontWeight: 900,
-              color: "white",
-              lineHeight: 1.15,
-              marginBottom: "12px",
-            }}
-          >
-            הפסיקו לשלם
-          </div>
-          <div
-            style={{
-              fontSize: "56px",
-              fontWeight: 900,
-              color: "#FFD700",
-              lineHeight: 1.15,
-              marginBottom: "12px",
-            }}
-          >
-            עמלות מיותרות
-          </div>
-          <div
-            style={{
-              fontSize: "56px",
-              fontWeight: 900,
-              color: "white",
-              lineHeight: 1.15,
-            }}
-          >
-            בחו״ל
-          </div>
-        </div>
+      <!-- Background -->
+      <rect width="800" height="630" fill="url(#bg)"/>
 
-        {/* Bottom bar */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "22px",
-              fontWeight: 600,
-              color: "rgba(255,255,255,0.75)",
-            }}
-          >
-            המדריך הקצר לנסיעה חכמה יותר
-          </div>
-          <div
-            style={{
-              background: "rgba(255,255,255,0.15)",
-              padding: "8px 20px",
-              borderRadius: "20px",
-              fontSize: "18px",
-              fontWeight: 700,
-              color: "white",
-            }}
-          >
-            ✈️ קיץ 2026
-          </div>
-        </div>
-      </div>
-    ),
-    {
-      width: 800,
-      height: 630,
-    }
-  );
+      <!-- Agent name + title (top right) -->
+      <text x="760" y="75" text-anchor="end" direction="rtl"
+            font-size="30" font-weight="900" fill="white" font-family="sans-serif">
+        ${escapeXml(agent.name)}
+      </text>
+      <text x="760" y="105" text-anchor="end" direction="rtl"
+            font-size="18" font-weight="500" fill="rgba(255,255,255,0.8)" font-family="sans-serif">
+        ${escapeXml(agent.title)}
+      </text>
+
+      <!-- Main headline -->
+      <text x="760" y="240" text-anchor="end" direction="rtl"
+            font-size="58" font-weight="900" fill="white" font-family="sans-serif">
+        הפסיקו לשלם
+      </text>
+      <text x="760" y="310" text-anchor="end" direction="rtl"
+            font-size="58" font-weight="900" fill="#FFD700" font-family="sans-serif">
+        עמלות מיותרות
+      </text>
+      <text x="760" y="380" text-anchor="end" direction="rtl"
+            font-size="58" font-weight="900" fill="white" font-family="sans-serif">
+        בחו״ל
+      </text>
+
+      <!-- Bottom bar -->
+      <text x="760" y="560" text-anchor="end" direction="rtl"
+            font-size="20" font-weight="600" fill="rgba(255,255,255,0.75)" font-family="sans-serif">
+        המדריך הקצר לנסיעה חכמה יותר
+      </text>
+
+      <!-- Badge -->
+      <rect x="40" y="540" width="160" height="40" rx="20" fill="rgba(255,255,255,0.15)"/>
+      <text x="120" y="566" text-anchor="middle" direction="rtl"
+            font-size="16" font-weight="700" fill="white" font-family="sans-serif">
+        ✈️ קיץ 2026
+      </text>
+    </svg>
+  `;
+
+  const imageBuffer = await sharp(Buffer.from(svgText))
+    .composite(photoComposite)
+    .jpeg({ quality: 90 })
+    .toBuffer();
+
+  return new NextResponse(imageBuffer, {
+    headers: {
+      "Content-Type": "image/jpeg",
+      "Cache-Control": "public, max-age=86400, s-maxage=86400",
+    },
+  });
+}
+
+function escapeXml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
 }
