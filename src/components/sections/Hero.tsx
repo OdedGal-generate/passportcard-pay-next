@@ -37,11 +37,11 @@ export default function Hero() {
         transition={{ duration: 0.5 }}
         className="relative z-[1]"
       >
-        <span className="inline-flex items-center gap-1.5 bg-white/15 text-white/90 text-[13px] font-semibold px-4 py-2 rounded-full mb-5">
+        <span className="inline-flex items-center gap-1.5 bg-white/15 text-white/90 text-[11px] font-semibold px-3.5 py-1.5 rounded-full mb-4">
           ✈️ קיץ 2026 · טיפ ששווה כסף
         </span>
 
-        <h1 className="text-[34px] font-black text-white leading-[1.15]">
+        <h1 className="text-[30px] font-black text-white leading-[1.2]">
           הפסיקו לשלם
           <br />
           <em className="not-italic text-[#FFD700]">עמלות מיותרות</em>
@@ -49,7 +49,7 @@ export default function Hero() {
           בחו״ל
         </h1>
 
-        <p className="text-[15px] text-white/80 mt-3 font-medium">
+        <p className="text-[13px] text-white/75 mt-2">
           המדריך הקצר לנסיעה חכמה יותר
         </p>
       </motion.div>
