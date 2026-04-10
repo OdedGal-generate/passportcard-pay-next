@@ -36,7 +36,7 @@ export default function Proof() {
             <strong className="font-bold block text-[13px]">
               כרטיס אשראי אחד — נסיעה אחת
             </strong>
-            לא כולל הכרטיס של בן/בת הזוג.
+            לא כולל בן/בת הזוג.
             <br />
             במשפחה שלמה — אלפי שקלים.
           </div>
