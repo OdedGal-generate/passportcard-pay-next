@@ -7,12 +7,12 @@ export default function Savings() {
     <div className="p-5">
       <RevealOnScroll>
         <div className="bg-card rounded-2xl p-[18px] shadow-[0_2px_16px_rgba(0,0,0,0.07)] text-center">
-          <p className="text-[13px] text-muted">בטיול של שבוע עם משפחה אפשר לחסוך</p>
+          <p className="text-[13px] text-muted">בטיול משפחתי החיסכון יכול להגיע</p>
           <div className="text-[26px] font-black text-text my-1.5">
-            עד <em className="not-italic text-brand-500">₪680</em> ויותר
+            <em className="not-italic text-brand-500">לאלפי שקלים</em>
           </div>
           <p className="text-[11px] text-[#9ca3af]">
-            לפי חישוב ממוצע של עסקאות בחו״ל · בהשוואה לכרטיס אשראי רגיל
+            כל הטיול, לכל בני המשפחה
           </p>
         </div>
       </RevealOnScroll>
