@@ -11,7 +11,7 @@ export default function Hero() {
 
       {/* Coins — fall in wrapper */}
       <motion.div
-        className="absolute left-[5px] top-1/2 -translate-y-1/2 w-[120px] pointer-events-none z-[0]"
+        className="absolute left-[-8px] top-1/2 -translate-y-1/2 w-[120px] pointer-events-none z-[0]"
         initial={{ y: -180, opacity: 0 }}
         animate={{ y: 0, opacity: 0.9 }}
         transition={{ duration: 0.8, delay: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
