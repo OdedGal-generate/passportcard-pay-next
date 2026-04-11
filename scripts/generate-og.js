@@ -17,20 +17,20 @@ const BASE_IMG = path.join(ROOT, 'public', 'images', 'og-base.png');
 const AGENTS_DIR = path.join(ROOT, 'public', 'images', 'agents');
 const OG_DIR = path.join(ROOT, 'public', 'images', 'og');
 
-// Layout config (800x630 base image, 100px header)
-const CIRCLE_DIAMETER = 80;
-const CIRCLE_X = 690;
-const CIRCLE_Y = 10;
-const BORDER_WIDTH = 3;
+// Layout config (800x630 base image, 130px header)
+const CIRCLE_DIAMETER = 100;
+const CIRCLE_X = 680;
+const CIRCLE_Y = 12;
+const BORDER_WIDTH = 4;
 const BORDER_COLOR = '#D0021B';
 
-const NAME_X = 670;
-const NAME_Y = 12;
-const NAME_FONT_SIZE = 34;
+const NAME_X = 660;
+const NAME_Y = 18;
+const NAME_FONT_SIZE = 38;
 
-const TITLE_X = 670;
-const TITLE_Y = 52;
-const TITLE_FONT_SIZE = 22;
+const TITLE_X = 660;
+const TITLE_Y = 65;
+const TITLE_FONT_SIZE = 26;
 
 function escapeXml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
