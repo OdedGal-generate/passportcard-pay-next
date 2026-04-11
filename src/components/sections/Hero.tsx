@@ -37,8 +37,9 @@ export default function Hero() {
         transition={{ duration: 0.5 }}
         className="relative z-[1]"
       >
-        <span className="inline-flex items-center gap-1.5 bg-white/15 text-white/90 text-[11px] font-semibold px-3.5 py-1.5 rounded-full mb-4">
-          ✈️ קיץ 2026 · טיפ ששווה כסף
+        <span className="inline-flex items-center gap-2 bg-white/15 text-white/90 text-[11px] font-semibold px-3.5 py-1.5 rounded-full mb-4">
+          <img src="/images/airplane.png" alt="" className="h-[14px] w-auto" />
+          קיץ 2026 · טיפ ששווה כסף
         </span>
 
         <h1 className="text-[30px] font-black text-white leading-[1.2]">
