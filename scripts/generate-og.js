@@ -25,12 +25,12 @@ const BORDER_WIDTH = 4;
 const BORDER_COLOR = '#D0021B';
 
 const NAME_X = 650;
-const NAME_Y = 35;
-const NAME_FONT_SIZE = 34;
+const NAME_Y = 30;
+const NAME_FONT_SIZE = 40;
 
 const TITLE_X = 650;
 const TITLE_Y = 78;
-const TITLE_FONT_SIZE = 26;
+const TITLE_FONT_SIZE = 30;
 
 function escapeXml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
