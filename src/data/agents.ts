@@ -97,6 +97,12 @@ export const agents: AgentConfig[] = [
     title: "זה בטוח בשבילי",
     webhookUrl: "https://n8n.srv1068559.hstgr.cloud/webhook/b3a17fe9-7775-4fea-9111-4e9d8fde54a1",
   },
+  {
+    name: "אברהם אהרוני",
+    slug: "avi-aharoni",
+    title: "סוכן ביטוח, פנסיה ופיננסים",
+    webhookUrl: "https://n8n.srv1068559.hstgr.cloud/webhook/bc24dd07-ef28-4944-969a-327d16e95bbf",
+  },
 ];
 
 export function getAgent(slug: string): AgentConfig | undefined {
