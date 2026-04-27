@@ -8,6 +8,8 @@ import PageWrapper from "@/components/layout/PageWrapper";
 import AgentBar from "@/components/layout/AgentBar";
 import Hero from "@/components/sections/Hero";
 import Problem from "@/components/sections/Problem";
+import Solution from "@/components/sections/Solution";
+import HowItWorks from "@/components/sections/HowItWorks";
 import MidCTA from "@/components/sections/MidCTA";
 import Comparison from "@/components/sections/Comparison";
 import Savings from "@/components/sections/Savings";
@@ -39,8 +41,10 @@ export default function AgentPageClient({ agent }: AgentPageClientProps) {
         <AgentBar agent={agent} />
         <Hero />
         <Problem />
-        <MidCTA />
+        <Solution />
         <Comparison />
+        <HowItWorks />
+        <MidCTA />
         <Savings />
         <Proof />
         <TaxFree />

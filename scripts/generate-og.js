@@ -18,19 +18,19 @@ const AGENTS_DIR = path.join(ROOT, 'public', 'images', 'agents');
 const OG_DIR = path.join(ROOT, 'public', 'images', 'og');
 
 // Layout config (800x630 base image, 170px header)
-const CIRCLE_DIAMETER = 110;
-const CIRCLE_X = 670;
-const CIRCLE_Y = 22;
+const CIRCLE_DIAMETER = 140;
+const CIRCLE_X = 640;
+const CIRCLE_Y = 15;
 const BORDER_WIDTH = 4;
 const BORDER_COLOR = '#D0021B';
 
-const NAME_X = 645;
-const NAME_Y = 28;
-const NAME_FONT_SIZE = 42;
+const NAME_X = 615;
+const NAME_Y = 40;
+const NAME_FONT_SIZE = 46;
 
-const TITLE_X = 645;
-const TITLE_Y = 80;
-const TITLE_FONT_SIZE = 28;
+const TITLE_X = 615;
+const TITLE_Y = 100;
+const TITLE_FONT_SIZE = 30;
 
 function escapeXml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
@@ -91,7 +91,7 @@ async function generateForAgent(agent) {
 
   // 2. Create text overlay SVG
   const textSvg = Buffer.from(
-    `<svg width="800" height="140" xmlns="http://www.w3.org/2000/svg">
+    `<svg width="800" height="170" xmlns="http://www.w3.org/2000/svg">
       <text x="${NAME_X}" y="${NAME_Y + NAME_FONT_SIZE}"
             font-family="Arial, Helvetica, sans-serif"
             font-size="${NAME_FONT_SIZE}px"

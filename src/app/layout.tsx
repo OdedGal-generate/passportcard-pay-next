@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
-import { Rubik } from "next/font/google";
+import { Heebo, Assistant } from "next/font/google";
 import "./globals.css";
 
-const rubik = Rubik({
+const heebo = Heebo({
   subsets: ["hebrew", "latin"],
-  variable: "--font-rubik",
+  weight: ["500", "700", "800", "900"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const assistant = Assistant({
+  subsets: ["hebrew", "latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -20,10 +28,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="he" dir="rtl" className={`${rubik.variable}`}>
-      <body className="min-h-screen font-rubik antialiased bg-[#c8d8e8]">
-        {children}
-      </body>
+    <html
+      lang="he"
+      dir="rtl"
+      className={`${heebo.variable} ${assistant.variable}`}
+    >
+      <body className="min-h-screen antialiased page-bg">{children}</body>
     </html>
   );
 }

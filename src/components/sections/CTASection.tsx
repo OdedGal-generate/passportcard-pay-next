@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { AgentConfig } from "@/lib/types";
+import Logomark from "@/components/brand/Logomark";
 
 interface CTASectionProps {
   agent: AgentConfig;
@@ -37,29 +38,54 @@ export default function CTASection({ agent, onBuy, onRemind }: CTASectionProps) 
   }, []);
 
   return (
-    <div id="cta-buttons" className="bg-[#111827] px-5 py-[22px] pb-7">
-      <p className="text-[13px] text-white/60 mb-3.5 leading-relaxed text-center">
+    <div id="cta-buttons" className="bg-[#1A1313] px-5 py-7">
+      {/* Trust micro-line */}
+      <div className="flex items-center justify-center gap-3 text-[10px] text-white/55 mb-3 font-semibold">
+        <span className="inline-flex items-center gap-1">
+          <span className="text-brand-400">✓</span> אישור מיידי
+        </span>
+        <span className="text-white/20">·</span>
+        <span className="inline-flex items-center gap-1">
+          <span className="text-brand-400">✓</span> ביטול חינם
+        </span>
+        <span className="text-white/20">·</span>
+        <span className="inline-flex items-center gap-1">
+          <span className="text-brand-400">✓</span> ללא התחייבות
+        </span>
+      </div>
+
+      <p className="text-[13px] text-white/70 mb-3.5 leading-relaxed text-center">
         טסים לחו״ל? לחצו ונדאג לכם להכל — ביטוח + חיסכון בעמלות.
       </p>
+
       <div className="flex flex-col gap-2.5">
         <button
           ref={buyRef}
           onClick={onBuy}
-          className="bg-brand-500 text-white border-none rounded-[14px] py-[15px] w-full text-[15px] font-bold cursor-pointer text-center shadow-[0_4px_14px_rgba(208,2,27,0.4)] active:opacity-90"
+          className="text-white border-none rounded-2xl py-4 w-full text-[15px] font-display font-extrabold cursor-pointer text-center active:opacity-90 inline-flex items-center justify-center gap-2 transition-transform hover:-translate-y-0.5 relative overflow-hidden"
+          style={{
+            background:
+              "linear-gradient(135deg, #F23847 0%, #E10E18 50%, #C00913 100%)",
+            boxShadow: "var(--shadow-cta)",
+          }}
         >
-          ✈️ רכישת ביטוח נסיעות עכשיו
+          רכישת ביטוח נסיעות עכשיו
         </button>
         <button
           ref={remindRef}
           onClick={onRemind}
-          className="bg-white/[0.07] text-white/65 border border-white/15 rounded-[14px] py-[13px] w-full text-[13px] font-medium cursor-pointer text-center active:opacity-90"
+          className="bg-white/[0.07] text-white/70 border border-white/15 rounded-2xl py-3 w-full text-[13px] font-medium cursor-pointer text-center active:opacity-90 hover:bg-white/[0.1] transition-colors"
         >
-          ⏰ שלח לי תזכורת קרוב לטיסה
+          שלח לי תזכורת קרוב לטיסה
         </button>
       </div>
-      <div className="flex justify-center items-center gap-2 mt-[18px]">
+
+      <div className="flex justify-center items-center gap-2 mt-5">
         <span className="w-1.5 h-1.5 bg-brand-500 rounded-full" />
-        <span className="text-white/[0.28] text-[11px] font-medium" id="agent-footer-text">
+        <span
+          className="text-white/30 text-[11px] font-medium"
+          id="agent-footer-text"
+        >
           {agent.name} · {agent.title}
         </span>
         <span className="w-1.5 h-1.5 bg-brand-500 rounded-full" />

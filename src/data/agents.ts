@@ -109,6 +109,42 @@ export const agents: AgentConfig[] = [
     title: "סוכנת ביטוח, פנסיה ופיננסים",
     webhookUrl: "https://n8n.srv1068559.hstgr.cloud/webhook/d21d48a9-b770-45fc-bbdb-48a1f1748d32",
   },
+  {
+    name: "נועה ניסטל",
+    slug: "nistel-ins",
+    title: "ניסטל ביטוח ופיננסים",
+    webhookUrl: "https://n8n.srv1068559.hstgr.cloud/webhook/65d85441-d764-4ebd-aca9-fb9ccfd5f34b",
+  },
+  {
+    name: "איציק בן סלמון",
+    slug: "itzik-ben-salmon",
+    title: "סוכן ביטוח, פנסיה ופיננסים",
+    webhookUrl: "https://n8n.srv1068559.hstgr.cloud/webhook/2fb70049-db0f-4318-8930-80d6fc9cbfa8",
+  },
+  {
+    name: "בני יחילצ׳וק",
+    slug: "beni-yechilzuke",
+    title: "סוכן ביטוח, פנסיה ופיננסים",
+    webhookUrl: "https://n8n.srv1068559.hstgr.cloud/webhook/91e0ff00-4bcb-4212-940b-32fd187bc51e",
+  },
+  {
+    name: "אבי אמסלם",
+    slug: "avi-amsalem",
+    title: "סוכן ביטוח, פנסיה ופיננסים",
+    webhookUrl: "https://n8n.srv1068559.hstgr.cloud/webhook/3b5cd281-5720-4201-905a-d100e9e9bfe5",
+  },
+  {
+    name: "נועם כהן",
+    slug: "noam-cohen",
+    title: "סוכן ביטוח, פנסיה ופיננסים",
+    webhookUrl: "https://n8n.srv1068559.hstgr.cloud/webhook/1182e5af-d56c-46a4-9cf8-f440182c26ed",
+  },
+  {
+    name: "חן עוזרי",
+    slug: "chen-ozeri",
+    title: "סוכן ביטוח, פנסיה ופיננסים",
+    webhookUrl: "https://n8n.srv1068559.hstgr.cloud/webhook/4116b0d2-2928-437f-80ea-ca2080a217fc",
+  },
 ];
 
 export function getAgent(slug: string): AgentConfig | undefined {

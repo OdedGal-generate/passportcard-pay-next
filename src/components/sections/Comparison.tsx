@@ -4,12 +4,14 @@ import RevealOnScroll from "../animations/RevealOnScroll";
 
 function CreditCardBad() {
   return (
-    <div className="w-[82px] h-[52px] bg-gradient-to-br from-[#94a3b8] to-[#cbd5e1] rounded-lg relative shadow-[0_3px_10px_rgba(0,0,0,0.15)] overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
-      <div className="absolute top-[10px] right-[9px] w-4 h-3 bg-gradient-to-br from-[#d4af37] to-[#b8962e] rounded-sm" />
-      <div className="absolute bottom-[7px] left-[7px] flex">
-        <span className="w-3.5 h-3.5 rounded-full bg-[#f79e1b] block -mr-1.5 opacity-90" />
-        <span className="w-3.5 h-3.5 rounded-full bg-[#eb001b] block" />
+    <div className="w-[82px] h-[68px] flex items-end justify-center">
+      <div className="w-[82px] h-[52px] bg-gradient-to-br from-[#94a3b8] to-[#cbd5e1] rounded-lg relative shadow-[0_3px_10px_rgba(0,0,0,0.15)] overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
+        <div className="absolute top-[10px] right-[9px] w-4 h-3 bg-gradient-to-br from-[#d4af37] to-[#b8962e] rounded-sm" />
+        <div className="absolute bottom-[7px] left-[7px] flex">
+          <span className="w-3.5 h-3.5 rounded-full bg-[#f79e1b] block -mr-1.5 opacity-90" />
+          <span className="w-3.5 h-3.5 rounded-full bg-[#eb001b] block" />
+        </div>
       </div>
     </div>
   );
@@ -70,7 +72,7 @@ export default function Comparison() {
               כרטיס אשראי רגיל
             </div>
             <CreditCardBad />
-            <ul className="flex flex-col gap-1.5 w-full mt-auto list-none">
+            <ul className="flex flex-col gap-1.5 w-full list-none">
               {["עמלת המרה כ-3%", "שער המרה לא תמיד ברור", "מצטבר למאות או אלפי ₪", "הגשת Tax Free ידנית"].map((item, i) => (
                 <li key={i} className="text-[11px] text-[#374151] flex items-start gap-1.5 leading-relaxed">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#ef4444] flex-shrink-0 mt-1" />
@@ -86,7 +88,7 @@ export default function Comparison() {
               PassportCard Pay
             </div>
             <PhoneCardGood />
-            <ul className="flex flex-col gap-1.5 w-full mt-auto list-none">
+            <ul className="flex flex-col gap-1.5 w-full list-none">
               {["0% עמלות — שער אמיתי", "שקלים → מט\"ח בקליק", "אפליקציה חכמה + התראות", "Tax Free אוטומטי דרך האפליקציה"].map((item, i) => (
                 <li key={i} className="text-[11px] text-[#374151] flex items-start gap-1.5 leading-relaxed">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0 mt-1" />

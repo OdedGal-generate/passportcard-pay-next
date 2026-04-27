@@ -4,18 +4,23 @@ import RevealOnScroll from "../animations/RevealOnScroll";
 
 export default function Problem() {
   return (
-    <div className="p-5">
+    <div className="px-5 py-6">
       <RevealOnScroll>
-        <div className="flex items-center gap-1.5 text-[16px] font-extrabold text-brand-500 tracking-wide uppercase mb-2.5">
-          הבעיה
-          <span className="flex-1 h-px bg-brand-border" />
+        <div className="flex items-center gap-1.5 mb-3">
+          <span className="font-display text-[15px] font-extrabold text-brand-500 tracking-wide uppercase">
+            הבעיה
+          </span>
+          <span className="flex-1 h-px bg-brand-200" />
         </div>
 
-        <div className="bg-card rounded-2xl p-4 shadow-[0_2px_16px_rgba(0,0,0,0.07)] text-[14px] text-[#374151] leading-relaxed">
+        <div
+          className="bg-card rounded-2xl p-4 border border-brand-100 text-[14px] text-[#374151] leading-relaxed"
+          style={{ boxShadow: "var(--shadow-card)" }}
+        >
           כשמשלמים בחו״ל עם כרטיס אשראי רגיל, משלמים גם{" "}
-          <strong className="text-brand-500 font-bold">
+          <span className="inline-block bg-brand-50 text-brand-700 font-bold px-2 py-0.5 rounded-md">
             עמלות המרה של עד 3%
-          </strong>{" "}
+          </span>{" "}
           על כל עסקה — בלי לשים לב. בטיול משפחתי זה מצטבר לסכום לא קטן.
         </div>
       </RevealOnScroll>
