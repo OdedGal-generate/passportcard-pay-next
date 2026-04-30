@@ -145,6 +145,12 @@ export const agents: AgentConfig[] = [
     title: "סוכן ביטוח, פנסיה ופיננסים",
     webhookUrl: "https://n8n.srv1068559.hstgr.cloud/webhook/4116b0d2-2928-437f-80ea-ca2080a217fc",
   },
+  {
+    name: "הדר דוד מלך",
+    slug: "hadar-david-melech",
+    title: "סוכן ביטוח, פנסיה ופיננסים",
+    webhookUrl: "https://n8n.srv1068559.hstgr.cloud/webhook/7b386f2c-37c0-456c-b392-7e53b4528f9d",
+  },
 ];
 
 export function getAgent(slug: string): AgentConfig | undefined {
