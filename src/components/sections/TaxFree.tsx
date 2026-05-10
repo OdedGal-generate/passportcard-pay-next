@@ -3,12 +3,11 @@
 import RevealOnScroll from "../animations/RevealOnScroll";
 import PhoneFrame from "../ui/PhoneFrame";
 import CountUp from "../ui/CountUp";
-import { ReceiptIcon, CheckIcon, IconDisc } from "@/components/brand/BrandIcons";
 
 const steps = [
-  { Icon: ReceiptIcon, label: "סורקים" },
-  { Icon: CheckIcon, label: "מאשרים" },
-  { Icon: ReceiptIcon, label: "מקבלים החזר" },
+  { src: "/images/steps/step-tax-1-scan.png", label: "סורקים" },
+  { src: "/images/steps/step-tax-2-approve.png", label: "מאשרים" },
+  { src: "/images/steps/step-tax-3-refund.png", label: "מקבלים החזר" },
 ];
 
 export default function TaxFree() {
@@ -47,21 +46,11 @@ export default function TaxFree() {
             מהטלפון — בלי ניירת, בלי תורים.
           </p>
 
-          {/* 3-step micro-flow */}
+          {/* 3-step micro-flow (matches HowItWorks pattern) */}
           <div className="relative mb-4">
-            {/* Dotted connector line behind */}
+            {/* Direction chevrons centered between adjacent illustrations */}
             <div
-              className="absolute top-[18px] left-[14%] right-[14%] h-px pointer-events-none"
-              style={{
-                backgroundImage:
-                  "linear-gradient(90deg, var(--color-brand-200) 50%, transparent 50%)",
-                backgroundSize: "8px 1px",
-                backgroundRepeat: "repeat-x",
-              }}
-            />
-            {/* Direction chevrons centered between adjacent discs */}
-            <div
-              className="absolute top-[12px] left-0 right-0 h-3 pointer-events-none"
+              className="absolute top-[26px] left-0 right-0 h-3 pointer-events-none z-[2]"
               aria-hidden="true"
             >
               {[33.333, 66.667].map((pct) => (
@@ -89,9 +78,13 @@ export default function TaxFree() {
                   key={i}
                   className="flex flex-col items-center text-center"
                 >
-                  <div className="relative z-[1] mb-2">
-                    <IconDisc Icon={s.Icon} size={36} />
-                  </div>
+                  <img
+                    src={s.src}
+                    alt={s.label}
+                    width={64}
+                    height={64}
+                    className="w-16 h-16 mb-2 relative z-[1]"
+                  />
                   <span className="text-[11px] font-semibold text-text leading-[1.3]">
                     {s.label}
                   </span>

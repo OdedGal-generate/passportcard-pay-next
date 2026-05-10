@@ -55,11 +55,12 @@ export default function Solution() {
           <div
             dir="rtl"
             lang="he"
-            className="bg-[#1A1313] text-white text-center font-display font-extrabold px-4 py-3 flex items-center justify-center"
+            className="text-white text-center font-display font-extrabold px-4 py-3 flex items-center justify-center"
             style={{
               minHeight: "3.25rem",
               fontSize: "clamp(15px, 4.2vw, 20px)",
               lineHeight: 1.25,
+              background: "var(--color-brand-500)",
             }}
           >
             <span>{caption || " "}</span>
