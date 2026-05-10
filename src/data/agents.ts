@@ -151,6 +151,12 @@ export const agents: AgentConfig[] = [
     title: "סוכן ביטוח, פנסיה ופיננסים",
     webhookUrl: "https://n8n.srv1068559.hstgr.cloud/webhook/7b386f2c-37c0-456c-b392-7e53b4528f9d",
   },
+  {
+    name: "עמיחי מאיר",
+    slug: "amichai-meir",
+    title: "סוכן ביטוח, פנסיה ופיננסים",
+    webhookUrl: "REPLACE_ME_WITH_N8N_WEBHOOK_URL",
+  },
 ];
 
 export function getAgent(slug: string): AgentConfig | undefined {
