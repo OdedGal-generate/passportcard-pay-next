@@ -155,7 +155,7 @@ export const agents: AgentConfig[] = [
     name: "עמיחי מאיר",
     slug: "amichai-meir",
     title: "סוכן ביטוח, פנסיה ופיננסים",
-    webhookUrl: "REPLACE_ME_WITH_N8N_WEBHOOK_URL",
+    webhookUrl: "https://n8n.srv1068559.hstgr.cloud/webhook/bdaf89b1-9a78-4a27-84a9-369e7f5d0b35",
   },
 ];
 
