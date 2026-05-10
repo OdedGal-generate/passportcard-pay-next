@@ -215,3 +215,23 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Hide native WebVTT subtitle rendering on the Solution video.
+   We feed the same VTT cues into a custom red banner above the video
+   (see Solution.tsx). Browsers (esp. mobile Chrome / Samsung Internet)
+   sometimes draw native captions anyway when `controls` is on or when the
+   user toggles the CC button — these rules silence that without breaking
+   the textTracks JS API our caption banner depends on. */
+.solution-video::cue {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  background: transparent !important;
+  color: transparent !important;
+}
+.solution-video::-webkit-media-text-track-display,
+.solution-video::-webkit-media-text-track-container,
+.solution-video::-webkit-media-text-track-region,
+.solution-video::-webkit-media-text-track-region-container {
+  display: none !important;
+  visibility: hidden !important;
+}
