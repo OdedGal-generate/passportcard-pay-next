@@ -157,6 +157,12 @@ export const agents: AgentConfig[] = [
     title: "סוכן ביטוח, פנסיה ופיננסים",
     webhookUrl: "https://n8n.srv1068559.hstgr.cloud/webhook/bdaf89b1-9a78-4a27-84a9-369e7f5d0b35",
   },
+  {
+    name: "דינה ציטרנבוים",
+    slug: "dina-tzitrenboim",
+    title: "סוכנת ביטוח, פנסיה ופיננסים",
+    webhookUrl: "https://n8n.srv1068559.hstgr.cloud/webhook/80f72e02-6bd5-40d4-8f23-22a6df090e83",
+  },
 ];
 
 export function getAgent(slug: string): AgentConfig | undefined {
