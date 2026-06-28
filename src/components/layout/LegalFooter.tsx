@@ -17,7 +17,9 @@ export default function LegalFooter() {
         </Link>
       </div>
       <p className="text-center text-white/30 text-[10px] mt-2 leading-relaxed">
-        © 2026 עודד גל סוכנות לביטוח פנסיוני (2016) בע״מ · ח.פ. 515548550
+        דף זה נבנה על ידי גל תכנון פיננסי
+        <br />
+        בית הסוכן הדיגיטלי הראשון בישראל
       </p>
     </div>
   );

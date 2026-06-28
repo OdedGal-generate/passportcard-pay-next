@@ -83,7 +83,7 @@ export default function Solution() {
           <div className="relative">
             <video
               ref={videoRef}
-              src="/videos/solution-16x9.mp4"
+              src="/videos/solution-16x9-v2.mp4"
               loop
               playsInline
               controls={hasStarted}
