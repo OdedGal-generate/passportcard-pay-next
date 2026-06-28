@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Heebo, Assistant } from "next/font/google";
 import "./globals.css";
+import AccessibilityWidget from "@/components/a11y/AccessibilityWidget";
 
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
@@ -33,7 +34,10 @@ export default function RootLayout({
       dir="rtl"
       className={`${heebo.variable} ${assistant.variable}`}
     >
-      <body className="min-h-screen antialiased page-bg">{children}</body>
+      <body className="min-h-screen antialiased page-bg">
+        <div id="a11y-root">{children}</div>
+        <AccessibilityWidget />
+      </body>
     </html>
   );
 }

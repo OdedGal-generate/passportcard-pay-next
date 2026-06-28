@@ -27,8 +27,16 @@ export default function ReminderModal({
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [destination, setDestination] = useState("");
+  const [consent, setConsent] = useState(false);
+  const [consentError, setConsentError] = useState(false);
 
   const handleSubmit = async () => {
+    if (!consent) {
+      setConsentError(true);
+      setTimeout(() => setConsentError(false), 2500);
+      return;
+    }
+
     const data = {
       lead_type: "reminder" as const,
       agent: agent.slug,
@@ -39,7 +47,7 @@ export default function ReminderModal({
       destination: destination.trim(),
       date_from: dateStart ? formatDate(dateStart) : "",
       date_to: dateEnd ? formatDate(dateEnd) : "",
-      consent: null,
+      consent: true,
     };
 
     fetch(agent.webhookUrl, {
@@ -125,6 +133,36 @@ export default function ReminderModal({
               </span>
             </div>
           </div>
+        </div>
+
+        {/* Consent checkbox */}
+        <div
+          className={`rounded-[10px] p-3 border-[1.5px] transition-colors ${
+            consentError
+              ? "border-brand-500 bg-brand-light"
+              : "border-brand-border bg-[#fff8f8]"
+          }`}
+        >
+          <label className="flex items-start gap-2.5 cursor-pointer text-[12px] text-[#4b5563] leading-relaxed">
+            <input
+              type="checkbox"
+              checked={consent}
+              onChange={(e) => setConsent(e.target.checked)}
+              className="w-[18px] h-[18px] accent-brand-500 flex-shrink-0 mt-0.5 cursor-pointer"
+            />
+            <span>
+              מאשר/ת שמירת הפרטים ויצירת קשר לצורך התזכורת, בהתאם ל
+              <a
+                href="/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="text-brand-600 underline"
+              >
+                מדיניות הפרטיות
+              </a>
+            </span>
+          </label>
         </div>
       </div>
 

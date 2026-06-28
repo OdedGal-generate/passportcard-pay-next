@@ -17,6 +17,7 @@ import Proof from "@/components/sections/Proof";
 import TaxFree from "@/components/sections/TaxFree";
 import Bonus from "@/components/sections/Bonus";
 import CTASection from "@/components/sections/CTASection";
+import LegalFooter from "@/components/layout/LegalFooter";
 
 import PurchaseModal from "@/components/modals/PurchaseModal";
 import ReminderModal from "@/components/modals/ReminderModal";
@@ -54,6 +55,7 @@ export default function AgentPageClient({ agent }: AgentPageClientProps) {
           onBuy={() => setBuyOpen(true)}
           onRemind={() => setRemindOpen(true)}
         />
+        <LegalFooter />
       </PageWrapper>
 
       <PurchaseModal

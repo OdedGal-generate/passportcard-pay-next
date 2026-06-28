@@ -216,6 +216,27 @@ body {
   }
 }
 
+/* ── Self-hosted accessibility menu (toggled by AccessibilityWidget) ── */
+#a11y-root.a11y-contrast {
+  filter: contrast(1.3);
+}
+#a11y-root.a11y-links a,
+#a11y-root.a11y-links button {
+  text-decoration: underline !important;
+}
+#a11y-root.a11y-readable,
+#a11y-root.a11y-readable * {
+  font-family: Arial, "Assistant", "Heebo", system-ui, sans-serif !important;
+  letter-spacing: 0.02em !important;
+  line-height: 1.8 !important;
+}
+#a11y-root.a11y-stop-motion *,
+#a11y-root.a11y-stop-motion *::before,
+#a11y-root.a11y-stop-motion *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
 /* Hide native WebVTT subtitle rendering on the Solution video.
    We feed the same VTT cues into a custom red banner above the video
    (see Solution.tsx). Browsers (esp. mobile Chrome / Samsung Internet)
