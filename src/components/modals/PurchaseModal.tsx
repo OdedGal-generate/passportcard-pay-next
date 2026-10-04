@@ -4,6 +4,7 @@ import { useState } from "react";
 import Modal from "../ui/Modal";
 import { AgentConfig } from "@/lib/types";
 import { formatDate, formatDisplayDate } from "@/lib/utils";
+import { submitLead } from "@/lib/submitLead";
 
 interface PurchaseModalProps {
   isOpen: boolean;
@@ -29,8 +30,11 @@ export default function PurchaseModal({
   const [destination, setDestination] = useState("");
   const [consent, setConsent] = useState(false);
   const [consentError, setConsentError] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleSubmit = async () => {
+    if (submitting) return;
     if (!consent) {
       setConsentError(true);
       setTimeout(() => setConsentError(false), 2500);
@@ -50,11 +54,14 @@ export default function PurchaseModal({
       consent: true,
     };
 
-    fetch(agent.webhookUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    }).catch(() => {});
+    setSubmitting(true);
+    setSubmitError(null);
+    const error = await submitLead(agent.webhookUrl, data);
+    setSubmitting(false);
+    if (error) {
+      setSubmitError(error);
+      return;
+    }
 
     onClose();
     setTimeout(() => onSuccess(), 150);
@@ -158,9 +165,16 @@ export default function PurchaseModal({
         </div>
       </div>
 
+      {submitError && (
+        <p role="alert" className="text-[13px] font-bold text-brand-600 text-center -mb-1">
+          {submitError}
+        </p>
+      )}
+
       <button
         onClick={handleSubmit}
-        className="bg-brand-500 text-white border-none rounded-xl py-[15px] w-full text-[15px] font-bold cursor-pointer text-center mt-1 active:opacity-90"
+        disabled={submitting}
+        className="bg-brand-500 text-white border-none rounded-xl py-[15px] w-full text-[15px] font-bold cursor-pointer text-center mt-1 active:opacity-90 disabled:opacity-60 disabled:cursor-default"
       >
         שלח פרטים →
       </button>
